@@ -7,9 +7,21 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Paper } from '@mui/material';
+import EditTodoDialog from './EditTodoDialog';
 
-export default function TodoItem({ todo,deleteTodo }) {
+export default function TodoItem({ todo, deleteTodo, editTodo }) {
+
+    const [openDialog,setOpenDialog] = React.useState(false)
+
+    const dialogHandle = () => {
+        setOpenDialog(!openDialog)
+    }
+
   return (
+    <>
+    
+        <EditTodoDialog open={openDialog} dialogHandle={dialogHandle} todo={todo} editTodo={editTodo}/>
+
     <div style={{ marginBottom:"1.5em" }}>
         <Paper>
             <ListItem
@@ -26,10 +38,11 @@ export default function TodoItem({ todo,deleteTodo }) {
                         edge="start"
                         />
                     </ListItemIcon>
-                    <ListItemText primary={todo.text} />
+                    <ListItemText primary={todo.text} onClick={() => setOpenDialog(true)}/>
                     </ListItemButton>
             </ListItem>
         </Paper>
     </div>
+    </>
   );
 }

@@ -16,13 +16,26 @@ export default function Home() {
         setTodos(filtered)
     }
 
+    const editTodo = (id, newText) => {
+        const newTodos = [...todos]
+
+        for(var i in newTodos){
+            if(newTodos[i].id == id){
+                newTodos[i].text = newText
+            }
+        }
+
+        setTodos(newTodos)
+
+    }
+
   return (
     <Container maxWidth="xs">
         <Form addTodo={addTodo}/>
 
         {todos.map((todo) => (
 
-            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo}/> 
+            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo}/> 
 
         ))}
         
