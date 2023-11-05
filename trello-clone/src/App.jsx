@@ -1,8 +1,11 @@
 
+import { Box, Button, Paper, Typography } from "@mui/material";
 import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
 import { Draggable } from "react-beautiful-dnd";
+import NavBar from "./components/NavBar";
+import AddIcon from '@mui/icons-material/Add';
 
 const inicialItems = [
   { id: "111", content: "Conteúdo 1" },
@@ -79,41 +82,53 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <Box style={{ backgroundImage: "linear-gradient(45deg,#8587f3 30%,#fd84ae 100%)" }}>
+    <NavBar/>
+    <Box display="flex" justifyContent="center" height="100vh" >
       <DragDropContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h1>{column.name}</h1>
+          <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            
             <Droppable droppableId={column.id} key={column.id}>
               {(provided) => (
-                <div ref={provided.innerRef} style={{ backgroundColor: "lightblue", width: 250, height: 500, padding: 10, margin: 10 }}>
+                <Box style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10 }}>
+                  <Typography variant="h4">{column.name}</Typography>
+                  <Box ref={provided.innerRef} width="100%" height="100%">
+
+                  
                   {column.items.map((item, index) => (
                     <Draggable draggableId={item.id} index={index} key={item.id}>
                       {(provided) => (
-                        <div
+                        <Paper
+                          elevation={2}
                           {...provided.dragHandleProps}
                           {...provided.draggableProps}
                           ref={provided.innerRef}
                           style={{
-                            backgroundColor: "gray",
                             height: 40,
-                            marginBottom: 10,
+                            marginTop: 15,
+                            padding: 5,
                             ...provided.draggableProps.style,
                           }}
                         >
                           {item.content}
-                        </div>
+                        </Paper>
                       )}
                     </Draggable>
                   ))}
                   {provided.placeholder}
-                </div>
+                  <Button sx={{ marginTop: "20px", color:"#959dab" }} size="large" startIcon={<AddIcon />}>
+  CARD
+</Button>
+                  </Box>
+                </Box>
               )}
             </Droppable>
-          </div>
+          </Box>
         ))}
       </DragDropContext>
-    </div>
+    </Box>
+    </Box>
   );
 }
 
