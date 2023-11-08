@@ -16,17 +16,17 @@ const inicialItems = [
 const inicialColumns = [
   {
     name: "To do",
-    id: "123",
+    id: "1",
     items: inicialItems,
   },
   {
     name: "Doing",
-    id: "456",
+    id: "2",
     items: [],
   },
   {
     name: "Done",
-    id: "789",
+    id: "3",
     items: [],
   },
 ];
@@ -40,20 +40,26 @@ export default function Home() {
     const [columns, setColumns] = useState(inicialColumns);
     const [itemContent,setItemContent] = useState("");
     const [stateDialog,setStateDialog] = useState(false);
-
+    const [idColumn, setIdColumn] = useState(null)
     // Mudando o estado do dialogo
     const handleStateDialog = () => {
       setStateDialog(!stateDialog)
     }
 
+    // Acoes do botao de adicionar items
+
+    function actionButton (state,idColumn){
+      setStateDialog(state)
+      setIdColumn(idColumn)
+    }
+
     // Adicionar Item na Coluna
     const addItemColumn = (idColumn) => {
-        var cont = 0;
         var updateColumn = columns.map((column)=>{
             if(column.id == idColumn){
                 const objTemp = {
                     id: Date.now().toString(),
-                    content: `Testando`,
+                    content: itemContent,
                 }
 
                 column.items = [...column.items,objTemp]
@@ -61,7 +67,7 @@ export default function Home() {
             return column
     })
     setColumns(updateColumn);
-    setItemContent(''); // Limpar o campo de entrada.
+    setStateDialog(false);
 }
 
     // Acao dos items para se mover entre as colunas
@@ -116,6 +122,7 @@ export default function Home() {
 
     <DragDropContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
+          <>
           <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             
             <Droppable droppableId={column.id} key={column.id}>
@@ -146,11 +153,17 @@ export default function Home() {
                     </Draggable>
                   ))}
                   {provided.placeholder}
-                  <Button sx={{ marginTop: "20px", color:"#959dab" }} size="large" startIcon={<AddIcon/>} onClick={()=>setStateDialog(true)}>
+                  <Button sx={{ marginTop: "20px", color:"#959dab" }} size="large" startIcon={<AddIcon/>} onClick={()=> actionButton(true, column.id)}>
   CARD
 </Button>
 
-{/* Caixa de Dialogo */}
+                 
+                  </Box>
+                </Box>
+              )}
+            </Droppable>
+          </Box>
+                    {/* Caixa de Dialogo */}
 
 <Dialog 
 open={stateDialog} 
@@ -159,23 +172,22 @@ fullWidth
 TransitionComponent={Transition}
 keepMounted
 aria-describedby="alert-dialog-slide-description"
+
 >
 
   <DialogTitle>{"Digite uma nova atividade!"}</DialogTitle>
   <DialogContent>
-    <TextField defaultValue={'testando'} fullWidth />
+    <TextField defaultValue={itemContent} fullWidth onChange={(e) => setItemContent(e.target.value)}/>
   </DialogContent>
   <DialogActions>
     <Button onClick={handleStateDialog}>Cancelar</Button>
-    <Button >Ok</Button>
+    <Button onClick={() => {      
+          addItemColumn(idColumn)
+          setItemContent("")
+          }}>Ok</Button>
   </DialogActions>
 </Dialog>
-                 
-                  </Box>
-                </Box>
-              )}
-            </Droppable>
-          </Box>
+        </>
         ))}
       </DragDropContext>
     
