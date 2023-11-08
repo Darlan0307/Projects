@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Slide, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
@@ -30,6 +30,10 @@ const inicialColumns = [
     items: [],
   },
 ];
+// Contante da transicao do dialogo
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Home() {
     
@@ -37,6 +41,10 @@ export default function Home() {
     const [itemContent,setItemContent] = useState("");
     const [stateDialog,setStateDialog] = useState(false);
 
+    // Mudando o estado do dialogo
+    const handleStateDialog = () => {
+      setStateDialog(!stateDialog)
+    }
 
     // Adicionar Item na Coluna
     const addItemColumn = (idColumn) => {
@@ -105,6 +113,7 @@ export default function Home() {
       };
 
   return (
+
     <DragDropContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
           <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -140,7 +149,28 @@ export default function Home() {
                   <Button sx={{ marginTop: "20px", color:"#959dab" }} size="large" startIcon={<AddIcon/>} onClick={()=>setStateDialog(true)}>
   CARD
 </Button>
-{/* {stateDialog && alert("renderizou")} */}
+
+{/* Caixa de Dialogo */}
+
+<Dialog 
+open={stateDialog} 
+onClose={handleStateDialog} 
+fullWidth
+TransitionComponent={Transition}
+keepMounted
+aria-describedby="alert-dialog-slide-description"
+>
+
+  <DialogTitle>{"Digite uma nova atividade!"}</DialogTitle>
+  <DialogContent>
+    <TextField defaultValue={'testando'} fullWidth />
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={handleStateDialog}>Cancelar</Button>
+    <Button >Ok</Button>
+  </DialogActions>
+</Dialog>
+                 
                   </Box>
                 </Box>
               )}
@@ -148,5 +178,6 @@ export default function Home() {
           </Box>
         ))}
       </DragDropContext>
+    
   )
 }
