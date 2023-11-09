@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Slide, TextField, Typography } from "@mui/material";
 import { useState } from "react";
@@ -128,6 +128,7 @@ export default function Home() {
       };
 
   return (
+  
 
     <DragDropContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
@@ -136,7 +137,7 @@ export default function Home() {
             
             <Droppable droppableId={column.id} key={column.id}>
               {(provided) => (
-                <Box style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10 }}>
+                <div style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10 }}>
                   <Typography variant="h4">{column.name}</Typography>
                   <Box ref={provided.innerRef} width="100%" height="100%">
 
@@ -187,7 +188,7 @@ export default function Home() {
 
                  
                   </Box>
-                </Box>
+                </div>
               )}
             </Droppable>
           </Box>
@@ -218,7 +219,7 @@ aria-describedby="alert-dialog-slide-description"
         </>
         ))}
       </DragDropContext>
-    
+  
   )
 }
 
