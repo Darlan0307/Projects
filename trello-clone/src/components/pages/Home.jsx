@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Slide, TextField, Typography } from "@mui/material";
 import { useState } from "react";
@@ -6,18 +6,14 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { Droppable } from "react-beautiful-dnd";
 import { Draggable } from "react-beautiful-dnd";
 import AddIcon from '@mui/icons-material/Add';
-
-const inicialItems = [
-  { id: "111", content: "Conteúdo 1" },
-  { id: "222", content: "Conteúdo 2" },
-  { id: "333", content: "Conteúdo 3" },
-];
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const inicialColumns = [
   {
     name: "To do",
     id: "1",
-    items: inicialItems,
+    items: [],
   },
   {
     name: "Doing",
@@ -36,7 +32,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Home() {
-    
+ 
     const [columns, setColumns] = useState(inicialColumns);
     const [itemContent,setItemContent] = useState("");
     const [stateDialog,setStateDialog] = useState(false);
@@ -47,7 +43,6 @@ export default function Home() {
     }
 
     // Acoes do botao de adicionar items
-
     function actionButton (state,idColumn){
       setStateDialog(state)
       setIdColumn(idColumn)
@@ -69,6 +64,20 @@ export default function Home() {
     setColumns(updateColumn);
     setStateDialog(false);
 }
+
+    // Remover Item da coluna
+    const removeItem = (idColumn,idItem) => {
+      const updatedColumns = columns.map((column) => {
+        if (column.id === idColumn) {          
+          const filteredItems = column.items.filter((item) => item.id !== idItem);
+          column.items = filteredItems;          
+        }
+        return column;
+      });
+    
+      setColumns(updatedColumns);
+
+    }
 
     // Acao dos items para se mover entre as colunas
     const onDragEnd = (result) => {
@@ -123,7 +132,7 @@ export default function Home() {
     <DragDropContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
           <>
-          <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }} >
             
             <Droppable droppableId={column.id} key={column.id}>
               {(provided) => (
@@ -131,23 +140,42 @@ export default function Home() {
                   <Typography variant="h4">{column.name}</Typography>
                   <Box ref={provided.innerRef} width="100%" height="100%">
 
-                  
-                  {column.items.map((item, index) => (
+                 {column.items.map((item, index) => (
                     <Draggable draggableId={item.id} index={index} key={item.id}>
                       {(provided) => (
                         <Paper
+                          
                           elevation={2}
                           {...provided.dragHandleProps}
                           {...provided.draggableProps}
                           ref={provided.innerRef}
                           style={{
-                            height: 40,
+                            height: 60,
                             marginTop: 15,
                             padding: 5,
                             ...provided.draggableProps.style,
+                            fontSize:20,
+                            display:"flex",
+                            alignItems:"center",
+                            justifyContent:"space-between"
                           }}
                         >
                           {item.content}
+                          
+                            <Box>
+                            <Button 
+                            onClick={() => removeItem(column.id, item.id)}
+                            sx={{ color:"#959dab" }}>
+                            <EditIcon style={{ fontSize:30, cursor:"pointer" }}/>
+                            </Button>
+                            <Button
+                            onClick={() => removeItem(column.id, item.id)}
+                            sx={{ color:"#959dab" }}>
+                            <DeleteIcon style={{ fontSize:30, cursor:"pointer" }}/>
+                            </Button>                            
+                            </Box>
+                            
+                          
                         </Paper>
                       )}
                     </Draggable>
@@ -177,7 +205,7 @@ aria-describedby="alert-dialog-slide-description"
 
   <DialogTitle>{"Digite uma nova atividade!"}</DialogTitle>
   <DialogContent>
-    <TextField defaultValue={itemContent} fullWidth onChange={(e) => setItemContent(e.target.value)}/>
+    <TextField value={itemContent} fullWidth onChange={(e) => setItemContent(e.target.value)}/>
   </DialogContent>
   <DialogActions>
     <Button onClick={handleStateDialog}>Cancelar</Button>
@@ -193,3 +221,5 @@ aria-describedby="alert-dialog-slide-description"
     
   )
 }
+
+
