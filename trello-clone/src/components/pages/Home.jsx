@@ -12,17 +12,17 @@ import EditIcon from '@mui/icons-material/Edit';
 const inicialColumns = [
   {
     name: "To do",
-    id: "1",
+    id: "0",
     items: [],
   },
   {
     name: "Doing",
-    id: "2",
+    id: "1",
     items: [],
   },
   {
     name: "Done",
-    id: "3",
+    id: "2",
     items: [],
   },
 ];
@@ -35,17 +35,52 @@ export default function Home() {
  
     const [columns, setColumns] = useState(inicialColumns);
     const [itemContent,setItemContent] = useState("");
+    const [textTemp,setTextTemp] = useState("");
     const [stateDialog,setStateDialog] = useState(false);
+    const [stateEditDialog,setStateEditDialog] = useState(false)
     const [idColumn, setIdColumn] = useState(null)
+    const [idItem, setIdItem] = useState(null)
+
     // Mudando o estado do dialogo
     const handleStateDialog = () => {
       setStateDialog(!stateDialog)
+    }
+    const handleStateEditDialog = () => {
+      setStateEditDialog(!stateEditDialog)
     }
 
     // Acoes do botao de adicionar items
     function actionButton (state,idColumn){
       setStateDialog(state)
       setIdColumn(idColumn)
+    }
+
+    // Acaos do botao de editar itens
+    function actionButtonEdit(idColumn,idItem){
+      setStateEditDialog(true)
+      const texto = columns[idColumn].items.filter((item) => item.id == idItem)[0].content;
+      setTextTemp(texto)
+      setIdColumn(idColumn)
+      setIdItem(idItem)
+    }
+
+    // Editar item da coluna
+    const editItemColumn = (idColumn,idItem) => {
+      const updateColumn = columns.map((column) => {
+
+          if(column.id == idColumn){
+            const arrayTemp = column.items.map((item) => {
+              if(item.id == idItem){
+                item.content = textTemp
+              }
+              return item
+            })
+          }
+
+        return column
+      })
+
+      setColumns(updateColumn)
     }
 
     // Adicionar Item na Coluna
@@ -165,7 +200,7 @@ export default function Home() {
                           
                             <Box>
                             <Button 
-                            onClick={() => removeItem(column.id, item.id)}
+                            onClick={()=>actionButtonEdit(column.id, item.id)}
                             sx={{ color:"#959dab" }}>
                             <EditIcon style={{ fontSize:30, cursor:"pointer" }}/>
                             </Button>
@@ -213,6 +248,30 @@ aria-describedby="alert-dialog-slide-description"
     <Button onClick={() => {      
           addItemColumn(idColumn)
           setItemContent("")
+          }}>Ok</Button>
+  </DialogActions>
+</Dialog>
+
+{/* Dialogo para editar o card */}
+<Dialog 
+open={stateEditDialog} 
+onClose={handleStateEditDialog} 
+fullWidth
+TransitionComponent={Transition}
+keepMounted
+aria-describedby="alert-dialog-slide-description"
+
+>
+
+  <DialogTitle>{"Editando o card"}</DialogTitle>
+  <DialogContent>
+    <TextField value={textTemp} fullWidth onChange={(e) => setTextTemp(e.target.value)}/>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={handleStateEditDialog}>Cancelar</Button>
+    <Button onClick={() => {      
+          editItemColumn(idColumn,idItem);
+          handleStateEditDialog();
           }}>Ok</Button>
   </DialogActions>
 </Dialog>
