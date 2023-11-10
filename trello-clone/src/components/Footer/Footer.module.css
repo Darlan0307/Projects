@@ -1,0 +1,32 @@
+.rodape{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rodape p{
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.rodape ul{
+    display: flex;
+    gap: 3em;
+}
+
+.rodape ul svg{
+    color: #333;
+    font-size: 50px;
+    transition: .6s;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.rodape ul svg:hover{
+    transform: scale(1.1);
+    background-color: aliceblue;
+}

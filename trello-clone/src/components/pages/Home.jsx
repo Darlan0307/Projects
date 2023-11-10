@@ -172,8 +172,8 @@ export default function Home() {
             
             <Droppable droppableId={column.id} key={column.id}>
               {(provided) => (
-                <div style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10 }}>
-                  <Typography variant="h4">{column.name}</Typography>
+                <div style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10, borderRadius: 20 }}>
+                  <Typography variant="h3" textAlign="center">{column.name}</Typography>
                   <Box ref={provided.innerRef} width="100%" height="100%">
 
                  {column.items.map((item, index) => (
