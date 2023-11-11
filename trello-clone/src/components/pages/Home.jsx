@@ -37,7 +37,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Home({ textNewColumn, stateNewColumn }) {
+export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn }) {
  
     const [columns, setColumns] = useState(inicialColumns);
     const [itemContent,setItemContent] = useState("");
@@ -50,8 +50,11 @@ export default function Home({ textNewColumn, stateNewColumn }) {
     // Criando nova coluna
 
     function createNewColumn(){
-      console.log(textNewColumn);
-      console.log(columns.length);
+      if(textNewColumn !== ''){
+        console.log(textNewColumn);
+        console.log(columns.length);
+        setTextNewColumn('');
+      }     
     }
 
     if(stateNewColumn){

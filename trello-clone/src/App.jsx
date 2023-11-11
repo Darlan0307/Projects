@@ -13,7 +13,7 @@ function App() {
     <Box position="relative" style={{ backgroundImage: "linear-gradient(45deg,#8587f3 30%,#fd84ae 100%)" }}>
     <NavBar setTextNewColumn={setTextNewColumn} setStateNewColumn={setStateNewColumn}/>
     <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center" height="100vh" alignContent="flex-start" gap="1rem">
-      <Home textNewColumn={textNewColumn} stateNewColumn={stateNewColumn}/>
+      <Home textNewColumn={textNewColumn} stateNewColumn={stateNewColumn} setTextNewColumn={setTextNewColumn}/>
     </Box>
     </Box>
       <Footer/>
