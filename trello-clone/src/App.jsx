@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import Home from "./components/pages/Home";
 import Footer from "./components/Footer"
 import { useState } from "react";
-import Teste from './components/Teste'
 function App() {
   const [textNewColumn,setTextNewColumn] = useState("");
   const [stateNewColumn,setStateNewColumn] = useState(false);
@@ -17,7 +16,6 @@ function App() {
       <Home textNewColumn={textNewColumn} stateNewColumn={stateNewColumn}/>
     </Box>
     </Box>
-    {/* <Teste/> */}
       <Footer/>
       </>
   );

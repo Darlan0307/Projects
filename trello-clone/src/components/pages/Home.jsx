@@ -47,6 +47,18 @@ export default function Home({ textNewColumn, stateNewColumn }) {
     const [idColumn, setIdColumn] = useState(null)
     const [idItem, setIdItem] = useState(null)
 
+    // Criando nova coluna
+
+    function createNewColumn(){
+      console.log(textNewColumn);
+      console.log(columns.length);
+    }
+
+    if(stateNewColumn){
+      createNewColumn()
+    }
+    
+
     // Mudando o estado do dialogo
     const handleStateDialog = () => {
       setStateDialog(!stateDialog)
