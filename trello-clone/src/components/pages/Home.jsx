@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Slide, TextField, Typography } from "@mui/material";
 import { useState } from "react";
@@ -25,19 +25,14 @@ const inicialColumns = [
     id: "2",
     items: [],
   },
-  {
-    name: "Done",
-    id: "3",
-    items: [],
-  },
- 
+
 ];
 // Contante da transicao do dialogo
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn }) {
+export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn, setStateNewColumn }) {
  
     const [columns, setColumns] = useState(inicialColumns);
     const [itemContent,setItemContent] = useState("");
@@ -49,17 +44,24 @@ export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn }
 
     // Criando nova coluna
 
-    function createNewColumn(){
-      if(textNewColumn !== ''){
-        console.log(textNewColumn);
-        console.log(columns.length);
-        setTextNewColumn('');
-      }     
-    }
-
-    if(stateNewColumn){
-      createNewColumn()
-    }
+    useEffect(()=>{
+      function createNewColumn(){
+        if(textNewColumn !== ''){
+          const objColumn = {
+            name: textNewColumn,
+            id: `${columns.length}`,
+            items: [],
+          }
+          setColumns([...columns,objColumn])
+          setStateNewColumn(false);
+          setTextNewColumn('');
+        } 
+      }
+  
+      if(stateNewColumn){
+        createNewColumn()
+      }
+    },[stateNewColumn])
     
 
     // Mudando o estado do dialogo
