@@ -25,6 +25,11 @@ const inicialColumns = [
     id: "2",
     items: [],
   },
+  {
+    name: "Done",
+    id: "3",
+    items: [],
+  },
  
 ];
 // Contante da transicao do dialogo
@@ -165,10 +170,11 @@ export default function Home({ textNewColumn, stateNewColumn }) {
 
   return (
   
-
+    <>
+  
     <DragDropContext onDragEnd={onDragEnd}>
         {columns.map((column) => (
-          <>
+        
           <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }} >
             
             <Droppable droppableId={column.id} key={column.id}>
@@ -228,7 +234,11 @@ export default function Home({ textNewColumn, stateNewColumn }) {
               )}
             </Droppable>
           </Box>
-                    {/* Caixa de Dialogo */}
+
+        
+        ))}
+      </DragDropContext>
+                          {/* Caixa de Dialogo */}
 
 <Dialog 
 open={stateDialog} 
@@ -276,9 +286,7 @@ aria-describedby="alert-dialog-slide-description"
           }}>Ok</Button>
   </DialogActions>
 </Dialog>
-        </>
-        ))}
-      </DragDropContext>
+      </>
   
   )
 }
