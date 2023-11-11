@@ -25,24 +25,14 @@ const inicialColumns = [
     id: "2",
     items: [],
   },
-  {
-    name: "test",
-    id: "3",
-    items: [],
-  },
-  {
-    name: "test",
-    id: "4",
-    items: [],
-  },
-  
+ 
 ];
 // Contante da transicao do dialogo
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Home() {
+export default function Home({ textNewColumn, stateNewColumn }) {
  
     const [columns, setColumns] = useState(inicialColumns);
     const [itemContent,setItemContent] = useState("");
