@@ -5,22 +5,26 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
 .rodape p{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
+    text-align: center;
 }
 
 .rodape ul{
     display: flex;
-    gap: 3em;
+    gap: 1.5em;
 }
 
 .rodape ul svg{
     color: #333;
-    font-size: 50px;
+    font-size: 40px;
     transition: .6s;
     padding: 5px;
     border-radius: 3px;

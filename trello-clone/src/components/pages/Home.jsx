@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
+import styles from './Home.module.css'
 
 const inicialColumns = [
   {
@@ -203,7 +204,7 @@ export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn, 
             
             <Droppable droppableId={column.id} key={column.id}>
               {(provided) => (
-                <div style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10, borderRadius: 20 }}>
+                <div className={styles.card} >
                   <Box display="flex" justifyContent="center" position="relative">
                     <Typography variant="h3" textAlign="center">{column.name}</Typography>
 

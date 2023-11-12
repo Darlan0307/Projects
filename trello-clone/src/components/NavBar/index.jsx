@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { Button, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import styles from './NavBar.module.css'
 
 export default function NavBar({ setTextNewColumn, setStateNewColumn }) {
 
@@ -17,7 +18,7 @@ export default function NavBar({ setTextNewColumn, setStateNewColumn }) {
   return (
     <Box sx={{ flexGrow: 1, marginBottom:"20px" }}>
       <AppBar position="static" sx={{ backgroundColor: "#ffffff31", padding: 1 }}>
-        <Toolbar>
+        <Toolbar className={styles.navigation}>
             <Box display="flex" justifyContent="center" width="100%">
 
                 <Box component="img" width="150px" src="/assets/trello-logo.png"/>
