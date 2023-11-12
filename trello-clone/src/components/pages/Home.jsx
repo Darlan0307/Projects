@@ -8,6 +8,7 @@ import { Draggable } from "react-beautiful-dnd";
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const inicialColumns = [
   {
@@ -63,6 +64,12 @@ export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn, 
       }
     },[stateNewColumn])
     
+    // Removendo coluna
+    const removeColumn = (idColumn) => {
+      const newColumns = columns.filter((column) => column.id != idColumn)
+
+      setColumns(newColumns);
+    }
 
     // Mudando o estado do dialogo
     const handleStateDialog = () => {
@@ -197,7 +204,16 @@ export default function Home({ textNewColumn, stateNewColumn, setTextNewColumn, 
             <Droppable droppableId={column.id} key={column.id}>
               {(provided) => (
                 <div style={{ backgroundColor: "#ebebf1", width: 400, height:"fit-content", padding: 10, margin: 10, borderRadius: 20 }}>
-                  <Typography variant="h3" textAlign="center">{column.name}</Typography>
+                  <Box display="flex" justifyContent="center" position="relative">
+                    <Typography variant="h3" textAlign="center">{column.name}</Typography>
+
+                    <Button 
+                    onClick={() => removeColumn(column.id)}
+                    sx={{ position:"absolute", top:0, right:0, cursor:"pointer", color: "#c03232" }}>
+                      <ClearIcon sx={{ fontSize: 30 }}/>
+                    </Button>
+                    
+                  </Box>
                   <Box ref={provided.innerRef} width="100%" height="100%">
 
                  {column.items.map((item, index) => (
