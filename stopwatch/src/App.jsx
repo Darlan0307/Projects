@@ -1,11 +1,12 @@
 import './App.css'
+import Timer from './components/Timer'
 
 function App() {
   
 
   return (
     <>
-      <h1>Cronômetro</h1>
+      <Timer/>
     </>
   )
 }
