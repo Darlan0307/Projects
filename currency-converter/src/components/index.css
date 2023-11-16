@@ -1,0 +1,25 @@
+.container{
+    background-color: #eaeaea;
+    color: #242424;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.container span{
+    margin: 1em 0;
+}
+.container h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+}
+
+.input_form{
+    width: 100%;
+}
+
+.select_rest{
+    height: 50px;
+    width: 100%;
+}
