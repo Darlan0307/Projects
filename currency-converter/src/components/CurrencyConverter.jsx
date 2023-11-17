@@ -32,7 +32,7 @@ const CurrencyConverter = () => {
 
 
     if(!rates){
-        return <div>Carregando...</div>
+        return <div>Carregando...</div>        
     }
 
   return (
