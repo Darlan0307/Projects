@@ -1,0 +1,36 @@
+.cabecalho{
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--preto);
+    color: #eaeaea;
+    margin-bottom: 1.5em;
+}
+
+.cabecalho img {
+    width: 220px;
+    transition: .6s;
+}
+
+.cabecalho img:hover{
+    transform: scale(1.1);
+}
+
+.cabecalho span{
+    color: #25aae2;
+}
+
+.cabecalho nav a{
+    color: #eaeaea;
+    font-size: 1.5em;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: .6s;
+}
+
+.cabecalho nav a:hover{
+    background-color: #333;
+}
