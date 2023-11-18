@@ -43,12 +43,12 @@ const Index = () => {
         <Cabecalho/>
             <Container maxWidth="lg" >
                 <Routes>
-                    <Route element={<Home dataCharacter={dataCharacter} setIdOnclick={setIdOnclick} setGender={setGender} setSpecies={setSpecies} setStatus={setStatus}/>} path='/'/>
+                    <Route element={<Home dataCharacter={dataCharacter} setIdOnclick={setIdOnclick} setGender={setGender} setSpecies={setSpecies} setStatus={setStatus} gender={gender} species={species} status={status}/>} path='/'/>
                     <Route element={<Character dataCharacter={dataCharacter} idOnClick={idOnClick}/>} path='/character'/>
                     <Route element={<Sobre/>} path='/sobre'/>
                 </Routes>
             </Container>
-        {/* <Rodape/> */}
+        <Rodape/>
     </BrowserRouter>
   )
 }

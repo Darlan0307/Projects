@@ -1,8 +1,11 @@
 import React from 'react'
+import './Layout.css'
 
 const Rodape = () => {
   return (
-    <div>Rodape</div>
+    <footer className='rodape'>
+      <p>2023 &copy; Darlan Martins</p>
+    </footer>
   )
 }
 

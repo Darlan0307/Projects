@@ -1,8 +1,0 @@
-gender
-value: Male,Female,unknown
-
-species
-value: Human,Alien
-
-status
-value: unknown,Alive,Dead

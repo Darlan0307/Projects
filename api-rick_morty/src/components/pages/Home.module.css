@@ -6,8 +6,16 @@
     justify-content: center; 
 }
 
+.container h2{
+    color: #eaeaea;
+}
+
 .config{
- color: #eaeaea;   
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 .cards{
