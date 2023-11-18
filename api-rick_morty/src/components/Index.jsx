@@ -35,7 +35,7 @@ const Index = () => {
   },[gender,species,status])
 
   if(!dataCharacter){
-    return <h3>Carregando...</h3>
+    return <h1 style={{ color:"#eaeaea" }}>Carregando...</h1>
   }
 
   return (
