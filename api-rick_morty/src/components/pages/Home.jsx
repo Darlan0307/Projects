@@ -1,8 +1,9 @@
 import React from 'react'
 
 import Styles from './Home.module.css'
+import CharacterCard from '../card/CharacterCard'
 
-const Home = () => {
+const Home = ({ dataCharacter, setIdOnclick }) => {
   return (
     <main className={Styles.container}>
       <section className={Styles.config}>
@@ -10,15 +11,10 @@ const Home = () => {
         
       </section>
       <div className={Styles.cards}>
-      <article>
-        <h3>card1</h3>
-        <p>Lorem ipsum dolor sit amet.</p>
-      </article>
-      <article>
-        <h3>card1</h3>
-        <p>Lorem ipsum dolor sit amet.</p>
-      </article>
-        
+
+        {dataCharacter ? dataCharacter.map((character)=>(
+          <CharacterCard key={character.id} character={character} setIdOnclick={setIdOnclick}/>
+        )) : <h3>Carregando...</h3>}      
         
       </div>
     </main>

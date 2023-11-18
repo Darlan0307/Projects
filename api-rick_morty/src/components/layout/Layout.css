@@ -1,11 +1,18 @@
 .cabecalho{
-    padding: 15px 0;
+    padding: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
     background-color: var(--preto);
     color: #eaeaea;
     margin-bottom: 1.5em;
+    gap: 1em;
+}
+
+.cabecalho h1{
+    font-size: 1.8em;
 }
 
 .cabecalho img {
@@ -29,6 +36,7 @@
     border-radius: 5px;
     text-decoration: none;
     transition: .6s;
+    font-weight: bold;
 }
 
 .cabecalho nav a:hover{

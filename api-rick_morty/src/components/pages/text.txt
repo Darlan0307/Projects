@@ -1,0 +1,7 @@
+gender
+location.name
+origin.name
+species
+status
+type
+episode (array)
