@@ -26,7 +26,7 @@ export default function CharacterCard({ character, setIdOnclick}) {
       <CardActions>
         <Link 
         to="/character"  
-        style={{ position:"absolute", bottom: 10, right: 10, textDecoration: "none", color:"#25aae2", fontSize: "18px"  }}
+        style={{ position:"absolute", bottom: 10, right: 10, textDecoration: "none", color:"#25aae2", fontSize: "22px", padding: 5  }}
         onClick={()=> setIdOnclick(character.id)}
         >
           Mais

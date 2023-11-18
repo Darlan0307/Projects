@@ -1,7 +1,8 @@
 gender
-location.name
-origin.name
+value: Male,Female,unknown
+
 species
+value: Human,Alien
+
 status
-type
-episode (array)
+value: unknown,Alive,Dead

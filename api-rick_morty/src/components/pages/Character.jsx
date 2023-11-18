@@ -51,7 +51,7 @@ export default function Character({ dataCharacter, idOnClick }) {
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                    <Link to="/"  style={{ textDecoration: "none", color:"#25aae2", fontSize: "18px"   }}>
+                    <Link to="/"  style={{ textDecoration: "none", color:"#25aae2", fontSize: "18px",fontSize: "22px", padding: 5   }}>
                         Voltar
                       </Link>
                     </CardActions>

@@ -10,15 +10,29 @@ import Character from './pages/Character';
 const Index = () => {
   const [dataCharacter, setDataCharacter] = useState(null);
   const [idOnClick, setIdOnclick] = useState(null);
+  const [gender, setGender] = useState('');
+  const [species, setSpecies] = useState('');
+  const [status, setStatus] = useState('');
 
 
   useEffect(()=>{
-    axios.get("https://rickandmortyapi.com/api/character")
-    .then((response) => response.data.results)
-    .then((data) => setDataCharacter(data))
-    .catch((err) => console.log("ERROR: " + err))
+    const apiUrl = "https://rickandmortyapi.com/api/character";
+    const pages = [1, 2, 3];
 
-  },[])
+    Promise.all(
+      pages.map((page) =>
+        axios.get(`${apiUrl}?page=${page}&gender=${gender}&species=${species}&status=${status}`)
+          .then((response) => response.data.results)
+      )
+    )
+    .then((characterData) => {
+      const allCharacters = characterData.flat();
+      setDataCharacter(allCharacters);
+    })
+    .catch((err) => console.log("ERROR: " + err));
+
+
+  },[gender,species,status])
 
   if(!dataCharacter){
     return <h3>Carregando...</h3>
@@ -29,7 +43,7 @@ const Index = () => {
         <Cabecalho/>
             <Container maxWidth="lg" >
                 <Routes>
-                    <Route element={<Home dataCharacter={dataCharacter} setIdOnclick={setIdOnclick}/>} path='/'/>
+                    <Route element={<Home dataCharacter={dataCharacter} setIdOnclick={setIdOnclick} setGender={setGender} setSpecies={setSpecies} setStatus={setStatus}/>} path='/'/>
                     <Route element={<Character dataCharacter={dataCharacter} idOnClick={idOnClick}/>} path='/character'/>
                     <Route element={<Sobre/>} path='/sobre'/>
                 </Routes>
