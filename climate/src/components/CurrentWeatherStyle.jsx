@@ -6,7 +6,8 @@ export const NomeCidade = styled.h3`
 `
 
 export const ImgClima = styled.img`
-    
+    width:60px;
+    margin: 0 auto;
 `
 
 export const ParagrafoG = styled.p`

@@ -2,13 +2,18 @@ import { Box } from '@mui/material'
 import React from 'react'
 import { ImgClima, NomeCidade, ParagrafoG } from './CurrentWeatherStyle'
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ dataWeather }) => {
   return (
-    <Box sx={{ alignSelf:"center",display:"flex",flexDirection:"column", gap:"1em", textAlign:"center",color:"#eaeaea" }}>
-      <NomeCidade>Nome do clima</NomeCidade>
-      <ImgClima src="" alt="imagem referente ao clima" />
-      <ParagrafoG>30°C</ParagrafoG>
-      <ParagrafoG>descricao</ParagrafoG>
+    <Box sx={{ alignSelf:"center",display:"flex",flexDirection:"column", gap:".5em", textAlign:"center",color:"#eaeaea" }}>
+      {dataWeather && <>
+        <NomeCidade>{dataWeather.name}</NomeCidade>
+        <ImgClima 
+          src={`http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}.png`}
+          alt={dataWeather.weather[0].description}
+        />
+        <ParagrafoG>{dataWeather.main.temp} °C</ParagrafoG>
+        <ParagrafoG>{dataWeather.weather[0].description}</ParagrafoG>
+      </>}
     </Box>
   )
 }
