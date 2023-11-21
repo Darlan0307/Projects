@@ -49,7 +49,13 @@ const WeatherApp = () => {
       setDataWeather(dataCity.data)
       setPrevDataClimates(prevDataCity.data.list.slice(0,5))
     }catch(err){
-      console.log("ERROR: ", err);
+      if(err.response.status == 404){
+        alert("Cidade não encontrada, tente de novo")
+      }else if(err.response.status == 400){
+        alert("Por favor informe uma cidade")
+      }else{
+        console.log("ERROR: ",err);
+      }
     }
   }
 
