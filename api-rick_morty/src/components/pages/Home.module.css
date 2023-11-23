@@ -12,10 +12,73 @@
 
 .config{
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     align-content: center;
+    gap: 2em;
+}
+
+.config .input_name{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.config input{
+    height: 40px;
+    background-color: white;
+    color: #242424;
+    padding-left: 6px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    transition: all .6s ease-in-out;
+}
+
+.config input:focus{
+    transform: scale(1.1);
+    border: 2px solid #25aae2;
+}
+
+.config .input_name button{
+    position: absolute;
+    top: 20;
+    right: 1px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #25aae2;
+    padding: 5px;
+    transition: all .6s ease-in-out;
+}
+
+.config .input_name button svg{
+    font-size: 32px;
+}
+
+.config .input_name button:hover{
+    transform: scale(1.2);
+}
+
+.config .reset{
+    font-size: 18px;
+    background-color: white;
+    color: #242424;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+@media (max-width:650px){
+    .config{
+        flex-direction: column;
+        gap: 1.5em;
+    }
 }
 
 .cards{
