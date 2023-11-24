@@ -1,11 +1,12 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import { ImgClima, NomeCidade, ParagrafoG } from './CurrentWeatherStyle'
+import { ImgClima, ImgPais, NomeCidade, ParagrafoG } from './CurrentWeatherStyle'
 
-const CurrentWeather = ({ dataWeather }) => {
+const CurrentWeather = ({ dataWeather, country }) => {
   return (
     <Box sx={{ alignSelf:"center",display:"flex",flexDirection:"column", gap:".5em", textAlign:"center",color:"#eaeaea" }}>
       {dataWeather && <>
+        <ImgPais src={`https://flagsapi.com/${country}/flat/64.png`} alt='Bandeira do pais'/>
         <NomeCidade>{dataWeather.name}</NomeCidade>
         <ImgClima 
           src={`http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}.png`}

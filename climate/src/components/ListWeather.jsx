@@ -16,7 +16,7 @@ const ListWeather = ({ prevDataClimates, hours, minutes, setHours }) => {
           {prevDataClimates.map((dataWeather, index)=>(  
             
                       
-            <Paper key={index} sx={{ backgroundColor:"#344A53" }}>
+            <Paper key={index} sx={{ backgroundColor:"#1976d2" }}>
               <li key={index}>
             <img 
             src={`http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}.png`}

@@ -15,6 +15,7 @@ const WeatherApp = () => {
   const [dataWeather,setDataWeather] = useState(null);
   const [city,setCity] = useState("");
   const [prevDataClimates,setPrevDataClimates] = useState(null);
+  const [country,setCountry] = useState('');
 
 
   useEffect(() => {
@@ -27,6 +28,7 @@ const WeatherApp = () => {
 
       setCity(resposta.data.name);
       setDataWeather(resposta.data);
+      setCountry(resposta.data.sys.country);
 
 
       const previsao = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`)
@@ -39,14 +41,15 @@ const WeatherApp = () => {
 
   const searchCity = async () =>{
     try{
+      const cityMod = city.trim();
+      const dataCity = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityMod}&appid=${apiKey}&units=metric&lang=pt_br`)
 
-      const dataCity = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`)
-
-      const prevDataCity = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=pt_br`)
+      const prevDataCity = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityMod}&appid=${apiKey}&units=metric&lang=pt_br`)
 
       setHours(dateNow.getHours());
       setMinutes(dateNow.getMinutes());
       setDataWeather(dataCity.data)
+      setCountry(dataCity.data.sys.country);
       setPrevDataClimates(prevDataCity.data.list.slice(0,5))
     }catch(err){
       if(err.response.status == 404){
@@ -65,7 +68,7 @@ const WeatherApp = () => {
   return (
     <Container maxWidth="xs" sx={{ display:"flex", flexDirection:"column", gap:"2em" }}>
       <InputCity searchCity={searchCity} city={city} setCity={setCity}/>
-      <CurrentWeather dataWeather={dataWeather}/>
+      <CurrentWeather dataWeather={dataWeather} country={country}/>
       <ListWeather prevDataClimates={prevDataClimates} hours={hours} minutes={minutes} setHours={setHours} />
     </Container>
   )
