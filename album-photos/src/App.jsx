@@ -37,7 +37,6 @@ function App() {
         );
         if (response.status === 200 && response.data && response.data.results) {
           setFotos(response.data.results);
-          console.log(response.data.results);
         }
       }catch(err){
         console.log("ERRO:",err);
@@ -56,7 +55,6 @@ function App() {
       
       if (response.status === 200 && response.data) {
         setFotos(response.data);
-        console.log(response.data);
       }
 
     }catch(err){

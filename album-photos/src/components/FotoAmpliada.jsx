@@ -4,7 +4,7 @@ const FotoAmpliada = ({fotoAmpliada, setFotoAmpliada}) => {
   return (
     <div className='foto-ampliada-backdrop' onClick={()=>setFotoAmpliada(null)}>
       <div className='foto-ampliada-container'>
-        <img src={fotoAmpliada.urls.regular} alt={dados.alt_description} />
+        <img src={fotoAmpliada.urls.regular} alt={fotoAmpliada.alt_description} />
       </div>
     </div>
   )

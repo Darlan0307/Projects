@@ -21,7 +21,7 @@ const SearchBar = ({setQuery, setCategory, setActiveSearch}) => {
       <select
       onChange={(e)=>{
         setCategory(e.target.value)
-        setActiveSearch(true);
+        // setActiveSearch(true);
       }}
       
       >
