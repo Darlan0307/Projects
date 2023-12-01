@@ -64,7 +64,7 @@ const Board = () => {
             <Square value={squares[7]} onClick={()=>handleClick(7)}/>
             <Square value={squares[8]} onClick={()=>handleClick(8)}/>
       </div>
-      <div style={{ display:"flex",marginTop:"1em",gap:"1em" }}>
+      <div style={{ display:"flex",marginTop:"1em",gap:"1em",flexWrap:"wrap", justifyContent:"center" }}>
         <p>Troque o modo de jogo:</p>
         <button
         onClick={()=>setModGameDuo(!modGameDuo)}
