@@ -6,6 +6,7 @@ const Board = () => {
     const [xIsNext,setxIsNext] = useState(true);
     const [aiIsThinking, setAiIsThinking] = useState(false);
     const winner = calculateWinner(squares);
+    const [modGameDuo,setModGameDuo] = useState(false);
 
     useEffect(() => {
         if (!xIsNext && !winner) {
@@ -40,6 +41,9 @@ const Board = () => {
           `Próximo a jogar: ${xIsNext ? "X" : "O"}`
         )}
       </div>
+      <p className='status_mod'>
+        {modGameDuo ? "Agora você pode jogar com um amigo" : "Agora você está jogando com um robô"}
+      </p>
 
       <div className='board_row'>
             <Square value={squares[0]} onClick={()=>handleClick(0)}/>
@@ -56,7 +60,11 @@ const Board = () => {
             <Square value={squares[7]} onClick={()=>handleClick(7)}/>
             <Square value={squares[8]} onClick={()=>handleClick(8)}/>
       </div>
-      <button className='button_reset' onClick={resetGame}>Reiniciar</button>
+      <div style={{ display:"flex",marginTop:"1em",gap:"1em" }}>
+        <p>Troque o modo de jogo:</p>
+        <button>{modGameDuo ? "robô" : "amigo"}</button>
+      </div>
+        <button className='button_reset' onClick={resetGame}>Reiniciar</button>
     </div>
   )
 }
