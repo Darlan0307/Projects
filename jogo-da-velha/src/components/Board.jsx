@@ -9,6 +9,7 @@ const Board = () => {
     const [modGameDuo,setModGameDuo] = useState(false);
 
     useEffect(() => {
+      if(!modGameDuo){
         if (!xIsNext && !winner) {
           setAiIsThinking(true);
           setTimeout(() => {
@@ -16,7 +17,8 @@ const Board = () => {
             setAiIsThinking(false);
           }, 1000);
         }
-      }, [xIsNext, squares, winner]);
+      }        
+      }, [xIsNext, squares, winner, modGameDuo]);
 
     const handleClick = (i) => {
         if(squares[i] || winner || aiIsThinking) return;
@@ -29,6 +31,7 @@ const Board = () => {
     const resetGame = () =>{
         setSquares(Array(9).fill(null))
         setxIsNext(true)
+        setModGameDuo(false)
     }
   return (
     <div style={{ display:"flex",flexDirection:"column",alignItems:"center" }}>
@@ -62,7 +65,9 @@ const Board = () => {
       </div>
       <div style={{ display:"flex",marginTop:"1em",gap:"1em" }}>
         <p>Troque o modo de jogo:</p>
-        <button>{modGameDuo ? "robô" : "amigo"}</button>
+        <button
+        onClick={()=>setModGameDuo(!modGameDuo)}
+        >{modGameDuo ? "robô" : "amigo"}</button>
       </div>
         <button className='button_reset' onClick={resetGame}>Reiniciar</button>
     </div>
