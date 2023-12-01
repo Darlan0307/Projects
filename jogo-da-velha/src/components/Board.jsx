@@ -7,15 +7,16 @@ const Board = () => {
     const [aiIsThinking, setAiIsThinking] = useState(false);
     const winner = calculateWinner(squares);
     const [modGameDuo,setModGameDuo] = useState(false);
+    const [velha,setVelha] = useState(false);
 
     useEffect(() => {
       if(!modGameDuo){
         if (!xIsNext && !winner) {
           setAiIsThinking(true);
           setTimeout(() => {
-            aiMove(squares, setSquares, setxIsNext);
+            aiMove(squares, setSquares, setxIsNext,resetGame);
             setAiIsThinking(false);
-          }, 1000);
+          }, 800);
         }
       }        
       }, [xIsNext, squares, winner, modGameDuo]);
@@ -96,21 +97,31 @@ const calculateWinner = (squares) => {
     return null;
   };
 
-  const aiMove = (squares, setSquares, setXIsNext) => {
-    let move = null;
-    for (let i = 0; i < squares.length; i++) {
-      if (!squares[i]) {
-        move = i;
-        break;
-      }
+  const aiMove = (squares, setSquares, setXIsNext, resetGame) => {
+     // Array para armazenar as posições nulas
+  const posicoesNulas = [];
+
+  // Identificar as posições nulas
+  for (let i = 0; i < squares.length; i++) {
+    if (!squares[i]) {
+      posicoesNulas.push(i);
     }
-  
-    if (move !== null) {
-      const newSquares = squares.slice();
-      newSquares[move] = "O";
-      setSquares(newSquares);
-      setXIsNext(true);
-    }
+  }
+
+  // Verificar se há posições nulas
+  if (posicoesNulas.length > 0) {
+    // Escolher aleatoriamente uma posição nula
+    const posicaoAleatoria = posicoesNulas[Math.floor(Math.random() * posicoesNulas.length)];
+
+    // Modificar a lógica original para preencher a posição aleatória
+    const newSquares = squares.slice();
+    newSquares[posicaoAleatoria] = "O";
+    setSquares(newSquares);
+    setXIsNext(true);
+  }else{
+    alert("velha")
+    resetGame();
+  }
   };
 
 export default Board
