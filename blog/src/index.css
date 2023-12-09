@@ -35,6 +35,8 @@ body{
 
 .cabecalho nav{
     display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     gap: 1em;
 }
 
@@ -76,7 +78,7 @@ body{
     font-size: 1.2em;
 }
 
-.single_post button{
+.button{
     width: 220px;
     font-size: 1.3em;
     border: none;
@@ -89,5 +91,39 @@ body{
 
 .single_post h2::first-letter,p::first-letter{
     text-transform: uppercase;
+}
+
+.form_newpost{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+}
+
+.form_newpost div{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+   
+}
+
+.form_newpost div label{
+    font-size: 2em;
+    font-weight: bold;
+    
+}
+
+.form_newpost div input,textarea{
+    width: 100%;
+    font-size: 18px;
+    outline: none;
+    background-color: #eaeaea;
+    padding: 5px;
+}
+
+.form_newpost div textarea{
+    height: 200px;
 }
 

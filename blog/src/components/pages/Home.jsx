@@ -1,9 +1,16 @@
 import React, { useContext } from "react"
 import { PostsContext } from "../context/PostsContext"
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
 
   const {posts} = useContext(PostsContext)
+
+  const navigate = useNavigate()
+
+  const userNavigation = (id) => {
+    navigate(`/post/${id}`)
+  }
 
   return (
     <div className="posts">
@@ -14,7 +21,11 @@ const Home = () => {
             <article key={post.id} className="single_post">
               <h2>{post.title}</h2>
               <p>{post.body}</p>
-              <button>Ler Mais</button>
+              <button
+              className="button"
+              onClick={()=>userNavigation(post.id)}
+              >Ler Mais</button>
+              <hr />
             </article>
           ))}
         </React.Fragment>
