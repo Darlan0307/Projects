@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import NewPost from './pages/NewPost'
 import Gerenciar from './pages/Gerenciar'
 import PostCurrent from './pages/PostCurrent'
+import UpdatePost from './pages/UpdatePost'
 
 
 const Blog = () => {
@@ -18,6 +19,7 @@ const Blog = () => {
                 <Route path='/newpost' element={<NewPost/>}/>
                 <Route path='/gerenciar' element={<Gerenciar/>}/>
                 <Route path='/post/:id' element={<PostCurrent/>}/>
+                <Route path='/editpost/:id' element={<UpdatePost/>}/>
             </Routes>
         </Container>
     </BrowserRouter>

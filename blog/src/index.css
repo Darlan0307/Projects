@@ -127,3 +127,22 @@ body{
     height: 200px;
 }
 
+.gerenciar{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.gerenciar article{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2em;
+    justify-content: space-around;
+    align-items: center;
+}
+.gerenciar article h2{
+    max-width: 450px;
+    min-width: 300px;
+    flex: 1;
+}
+
