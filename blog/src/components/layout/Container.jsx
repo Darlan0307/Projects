@@ -2,7 +2,12 @@ import React from 'react'
 
 const Container = ({children}) => {
   return (
-    <main>
+    <main
+    style={{
+      width:"80vw",
+      margin:"2em auto",
+    }}
+    >
       {children}
     </main>
   )

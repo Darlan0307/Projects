@@ -1,11 +1,14 @@
 import Blog from "./components/Blog"
+import { PostsProvider } from "./components/context/PostsProvider"
 
 function App() {
   
 
   return (
     <>
-      <Blog/>
+      <PostsProvider>
+        <Blog/>   
+      </PostsProvider> 
     </>
   )
 }

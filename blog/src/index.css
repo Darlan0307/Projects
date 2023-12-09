@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #242424;
+    color: #eaeaea;
+}
+
+.cabecalho
+{
+    padding: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    align-content: center;
+    background-color: #333;
+}
+
+.cabecalho a{
+    text-decoration: none;
+    color: #eaeaea;
+    font-size: 1.5em;
+    padding: 10px;
+    transition: all .6s;
+}
+
+.cabecalho a:hover{
+    transform: scale(1.1);
+}
+
+.cabecalho nav{
+    display: flex;
+    gap: 1em;
+}
+
+.cabecalho nav a {  
+    border-radius: 10px;
+}
+
+.cabecalho nav a:hover{
+    background-color: #242424;
+}
+
+.link_especial{
+    border: 2px solid white;
+}
+
+
+.posts{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.posts h1{
+    text-align: center;
+    font-size: 2em;
+}
+
+.single_post{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.single_post h2{
+    font-size: 1.6em;
+}
+
+.single_post p{
+    font-size: 1.2em;
+}
+
+.single_post button{
+    width: 220px;
+    font-size: 1.3em;
+    border: none;
+    background-color: #1987e6;
+    color: #eaeaea;
+    padding: 6px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.single_post h2::first-letter,p::first-letter{
+    text-transform: uppercase;
+}
+
