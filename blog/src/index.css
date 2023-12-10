@@ -146,3 +146,29 @@ body{
     flex: 1;
 }
 
+.config_buttons{
+    display: flex;
+    gap: 2em;
+}
+
+.edit_button,.remove_button{
+    border: none;
+    background-color: #333;
+    color: #eaeaea;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .6s;
+}
+
+.edit_button:hover,.remove_button:hover{
+    transform: scale(1.1);
+}
+
+.edit_button{
+    background-color: lightgreen;
+}
+
+.remove_button{
+    background-color: lightcoral;
+}
