@@ -29,6 +29,7 @@ const Gerenciar = () => {
       {posts.length > 0 ? (
         <React.Fragment>
           <h1>Todos os Posts</h1>
+          <hr />
           {posts.map((post) => (
             
             <article key={post.id} style={{ borderBottom:"2px solid white",paddingBottom:"2em" }}>

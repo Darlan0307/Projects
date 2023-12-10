@@ -17,6 +17,7 @@ const Home = () => {
       {posts.length > 0 ? (
         <React.Fragment>
           <h1>Últimos Posts</h1>
+          <hr />
           {posts.map((post) => (
             <article key={post.id} className="single_post">
               <h2>{post.title}</h2>

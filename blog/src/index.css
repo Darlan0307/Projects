@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', Arial , sans-serif;
 }
 
 body{
@@ -50,6 +51,19 @@ body{
 
 .link_especial{
     border: 2px solid white;
+}
+/* Responsivo do cabecalho */
+@media (max-width:650px){
+    .cabecalho{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width:480px){
+    .cabecalho nav{
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 
@@ -102,11 +116,15 @@ body{
 }
 
 .form_newpost div{
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
-   
+}
+@media (max-width:700px){
+    .form_newpost div{
+        width: 100%;
+    }
 }
 
 .form_newpost div label{
@@ -119,8 +137,8 @@ body{
     width: 100%;
     font-size: 18px;
     outline: none;
-    background-color: #eaeaea;
-    padding: 5px;
+    background-color: #c2c2c2;
+    padding: 10px;
     border-radius: 15px;
 }
 
