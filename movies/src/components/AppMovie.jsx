@@ -25,7 +25,7 @@ const AppMovie = () => {
             const response = await fetch(url)
             const data = await response.json()
             setMovies(data.results);
-            // console.log(data);
+            
         }catch(err){
             console.log("ERROR:",err);
         }
@@ -41,7 +41,7 @@ const AppMovie = () => {
         if(activeSearch && query){
             let newURL = `${urlsearch}?${apikey}&query=${query}`
             fetchData(newURL)
-            console.log(movies);
+            
             setActiveSearch(false)
         }
     },[query,activeSearch])

@@ -11,7 +11,7 @@ const Home = ({ movies,urlimage,query }) => {
 
   return (
     <div style={{ padding:"10px" }}>
-      {movies.length > 0 ? (
+      {movies ? (
         <>
           {query ? (
             <h2 className="title_query">Resultado: <span>{query}</span></h2>
