@@ -7,7 +7,7 @@ import SingleMovie from './pages/SingleMovie'
 const AppMovie = () => {
     // States
     const [movies,setMovies] = useState([])
-    const [titleDefault, setTitleDefault] = useState("Os Mais Votados")
+    const [titleDefault, setTitleDefault] = useState(null)
 
     // Variaveis do ambiente
     const apikey = import.meta.env.VITE_API_KEY;
@@ -23,7 +23,7 @@ const AppMovie = () => {
             const response = await fetch(url)
             const data = await response.json()
             setMovies(data.results);
-            console.log(data);
+            // console.log(data);
         }catch(err){
             console.log("ERROR:",err);
         }
@@ -41,7 +41,7 @@ const AppMovie = () => {
         <NavBar/>
         <Routes>
             <Route index element={<Home movies={movies} urlimage={urlimage} titleDefault={titleDefault}/>} />
-            <Route path='/movie/:id' element={<SingleMovie/>}/>
+            <Route path='/movie/:id' element={<SingleMovie movies={movies} urlimage={urlimage}/>}/>
         </Routes>
     </div>
   )
