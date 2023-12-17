@@ -7,7 +7,9 @@ import SingleMovie from './pages/SingleMovie'
 const AppMovie = () => {
     // States
     const [movies,setMovies] = useState([])
-    const [titleDefault, setTitleDefault] = useState(null)
+    const [query, setQuery] = useState('')
+    const [activeSearch,setActiveSearch] = useState(false)
+    
 
     // Variaveis do ambiente
     const apikey = import.meta.env.VITE_API_KEY;
@@ -35,12 +37,21 @@ const AppMovie = () => {
         fetchData(`${urlbase}top_rated?${apikey}`)
     },[])
 
+    useEffect(()=>{      
+        if(activeSearch && query){
+            let newURL = `${urlsearch}?${apikey}&query=${query}`
+            fetchData(newURL)
+            console.log(movies);
+            setActiveSearch(false)
+        }
+    },[query,activeSearch])
+
 
   return (
     <div>
-        <NavBar/>
+        <NavBar setQuery={setQuery} setActiveSearch={setActiveSearch}/>
         <Routes>
-            <Route index element={<Home movies={movies} urlimage={urlimage} titleDefault={titleDefault}/>} />
+            <Route index element={<Home movies={movies} urlimage={urlimage} query={query}/>} />
             <Route path='/movie/:id' element={<SingleMovie movies={movies} urlimage={urlimage}/>}/>
         </Routes>
     </div>

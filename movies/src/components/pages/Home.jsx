@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Home = ({ movies,urlimage,titleDefault }) => {
+const Home = ({ movies,urlimage,query }) => {
 
   const navigate = useNavigate();
 
@@ -13,8 +13,8 @@ const Home = ({ movies,urlimage,titleDefault }) => {
     <div style={{ padding:"10px" }}>
       {movies.length > 0 ? (
         <>
-          {titleDefault ? (
-            <h2 className="title_query">Resultado: <span>{titleDefault}</span></h2>
+          {query ? (
+            <h2 className="title_query">Resultado: <span>{query}</span></h2>
           ):(
             <h2 className='title_default'>Os Mais Votados</h2>
           )}
@@ -29,7 +29,7 @@ const Home = ({ movies,urlimage,titleDefault }) => {
               className='button_movie'
               onClick={()=>handleClick(movie.id)}
               >Ler Mais</button>
-              {/* <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank">link</a> */}
+              
             </article>
 
           ))}

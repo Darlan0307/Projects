@@ -1,8 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa' 
 
-const NavBar = () => {
+const NavBar = ({ setQuery, setActiveSearch }) => {
+
+  const inputRef = useRef()
+  const navigate = useNavigate()
+
   return (
     <header>
         <Link to="/" className='link'>
@@ -10,8 +14,16 @@ const NavBar = () => {
         </Link>
 
         <div className='container_query'>
-            <input type="text" placeholder='ex: Batman' className='input_query'/>
-            <button className='button'>
+            <input 
+            ref={inputRef}
+            type="text" placeholder='ex: Batman' className='input_query'/>
+            <button 
+            onClick={()=> {
+              navigate('/')
+              setQuery(inputRef.current.value);
+              setActiveSearch(true)
+            }}
+            className='button'>
                 <FaSearch/>
             </button>
         </div>
