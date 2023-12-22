@@ -1,0 +1,190 @@
+*{
+  list-style: none;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+.container_inputs{
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  align-items: center;
+}
+
+.icons-steps{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+
+} 
+
+.icons-steps div{
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  align-items: center;
+  
+}
+
+.icons-steps div svg{
+  font-size: 32px;
+  transition: all .6s;
+}
+
+.active svg{
+  fill: #535bf2;
+}
+
+.userform{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.userform div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5em;
+}
+
+.userform div label{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.userform div input{
+  font-size: 20px;
+  width: 100%;
+  outline: none;
+  padding: 5px;
+}
+
+.review{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.faces{
+  display: flex;
+  gap: 1em;
+}
+
+.faces div{
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  position: relative;
+}
+
+.faces div label{
+  cursor: pointer;
+}
+
+.faces div label svg{
+  font-size: 30px;
+}
+.faces div label:hover svg{
+  fill: #535bf2;
+}
+
+.faces div input{
+  opacity: 0;
+  position: absolute;
+}
+
+.faces div input:checked ~ label > svg{
+  fill: #535bf2;
+}
+
+.comment{
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  align-items: flex-start;
+}
+
+.comment textarea{
+  height: 120px;
+  width: 100%;
+}
+
+.thanks p{
+ max-width: 500px;
+ font-size: 18px;
+}
+
+.thanks p span{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.thanks p svg{
+  font-size: 20px;
+  margin-left: 1em;
+}
+
+.all-buttons{
+  display: flex;
+  gap: 2em;
+}
+
+
